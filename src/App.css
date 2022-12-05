@@ -18,7 +18,26 @@ form {
   display: flex;
   flex-direction: column;
   width: 50%;
-  margin: auto;
+  margin-left: 60px;
+}
 
+.formFlex {
+  display: flex;
+  padding-bottom: 15px;
+}
+
+label {
+  min-width: 120px;
+  padding-right: 10px;
+}
+
+.name {
+  text-align: end;
+}
+
+button {
+  margin-left: 95px;
+  margin-bottom: 40px;
+  margin-top: 15px;
 }
 

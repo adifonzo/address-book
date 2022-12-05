@@ -56,22 +56,22 @@ const CreateContact = () => {
              <div className="formContainer">
                 <h2>Create a Contact</h2>
                 <form action="submit" onSubmit={ handleSubmit }>
-                    <div className="nameFlex">
-                        <label htmlFor="name">Full Name:</label>
+                    <div className="formFlex">
+                        <label className="name">Full Name:</label>
                         <input 
                         type="text" 
                         onChange={handleNameInputChange}
                         />
                     </div> 
-                    <div className="phoneFlex">
-                        <label className="number">Phone Number</label>
+                    <div className="formFlex">
+                        <label className="number">Phone Number:</label>
                         <input 
                         type="text" 
                         onChange={handleNumberInputChange}
                         />
                     </div>
-                    <div className="emailFlex">
-                        <label htmlFor="email">Email Address</label>
+                    <div className="formFlex">
+                        <label className="email">Email Address:</label>
                         <input 
                         type="text"
                         onChange={handleEmailInputChange}
