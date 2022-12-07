@@ -41,3 +41,14 @@ button {
   margin-top: 15px;
 }
 
+h3 {
+  font-size: 30px;
+}
+
+li {
+  list-style: none;
+}
+
+.removeButton {
+  margin-left: 40px;
+}

@@ -1,5 +1,3 @@
-
-import { useState } from 'react';
 import CreateContact from './components/CreateContact';
 import './App.css';
 
