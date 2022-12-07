@@ -40,9 +40,6 @@ const CreateContact = () => {
         const dbRef = ref(database, `/${contactId}`);
         remove(dbRef);
     }
-
-    console.log(handleRemoveContact);
-    handleRemoveContact();
     
     useEffect (() => {
         const database = getDatabase(firebase);
