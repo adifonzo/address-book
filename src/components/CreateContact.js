@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
-import app from '../Firebase';
-import {getDatabase, ref, push, onValue} from 'firebase/database'
+// import app from '../Firebase';
+import {getDatabase, ref, push, onValue, remove} from 'firebase/database'
+import firebase from '../Firebase';
 
 const CreateContact = () => {
 
@@ -9,6 +10,7 @@ const CreateContact = () => {
     const [emailInput, setEmailInput] = useState("");
     const [contactInfo, setContactInfo] = useState([])
 
+    // Setting
     const handleNameInputChange = (event) => {
         setNameInput(event.target.value)
     } 
@@ -25,18 +27,28 @@ const CreateContact = () => {
         emailInput: emailInput
     }
 
+    // Creating 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const database = getDatabase(app);
+        const database = getDatabase(firebase);
         const dbRef = ref(database, "/contactInfo");
         push(dbRef, inputData);
         setNameInput("");
         setNumberInput("");
         setEmailInput("");
-    }    
+    }
+
+    const handleRemoveContact = (contactId) => {
+        const database = getDatabase(firebase);
+        const dbRef = ref(database, `/${contactId}`);
+        remove(dbRef);
+    }
+
+    console.log(handleRemoveContact);
+    handleRemoveContact();
     
     useEffect (() => {
-        const database = getDatabase(app);
+        const database = getDatabase(firebase);
         const dbRef = ref(database, "/contactInfo");
         const newState = [];
         onValue(dbRef, (response) => {
@@ -80,6 +92,25 @@ const CreateContact = () => {
                     <button>Create Contact</button>
                 </form>
              </div>
+                <>
+                    <h2>Contact List</h2>
+                </>
+             <ul>
+                {contactInfo.map( (singleContact) => {
+                    console.log(singleContact)
+                    return (
+                        <div>
+                            <li key={singleContact.key}>
+                                <h3>{singleContact.name.nameInput}</h3>
+                                <p>{singleContact.name.numberInput}</p>
+                                <p>{singleContact.name.emailInput}</p>
+                                <button onClick={() => handleRemoveContact(singleContact.key)}>Remove</button>
+                            </li>
+                        </div>
+                        
+                    )
+                })}
+             </ul>
         </section>
     )
 }
