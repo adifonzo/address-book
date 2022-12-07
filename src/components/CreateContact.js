@@ -37,15 +37,16 @@ const CreateContact = () => {
 
     const handleRemoveContact = (contactId) => {
         const database = getDatabase(firebase);
-        const dbRef = ref(database, `/${contactId}`);
+        const dbRef = ref(database, `/contactInfo/${contactId}`);
         remove(dbRef);
+
     }
     
     useEffect (() => {
         const database = getDatabase(firebase);
         const dbRef = ref(database, "/contactInfo");
-        const newState = [];
         onValue(dbRef, (response) => {
+            const newState = [];
             const data = response.val();
             for(let key in data) {
                 newState.push({key:key, name:data[key]})
@@ -67,6 +68,7 @@ const CreateContact = () => {
                         <input 
                         type="text" 
                         onChange={handleNameInputChange}
+                        value={nameInput}
                         />
                     </div> 
                     <div className="formFlex">
@@ -74,6 +76,7 @@ const CreateContact = () => {
                         <input 
                         type="text" 
                         onChange={handleNumberInputChange}
+                        value={numberInput}
                         />
                     </div>
                     <div className="formFlex">
@@ -81,6 +84,7 @@ const CreateContact = () => {
                         <input 
                         type="text"
                         onChange={handleEmailInputChange}
+                        value={emailInput}
                         />
                     </div>
                     <button>Create Contact</button>
@@ -98,7 +102,7 @@ const CreateContact = () => {
                                 <h3>{singleContact.name.nameInput}</h3>
                                 <p>{singleContact.name.numberInput}</p>
                                 <p>{singleContact.name.emailInput}</p>
-                                <button onClick={() => handleRemoveContact(singleContact.key)}>Remove</button>
+                                <button onClick={() => handleRemoveContact(singleContact.key)} className="removeButton">Remove</button>
                             </li>
                         </div>
                         
@@ -108,5 +112,6 @@ const CreateContact = () => {
         </section>
     )
 }
+
 
 export default CreateContact;
