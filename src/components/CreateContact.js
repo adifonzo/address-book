@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-// import app from '../Firebase';
 import {getDatabase, ref, push, onValue, remove} from 'firebase/database'
 import firebase from '../Firebase';
 
@@ -10,7 +9,6 @@ const CreateContact = () => {
     const [emailInput, setEmailInput] = useState("");
     const [contactInfo, setContactInfo] = useState([])
 
-    // Setting
     const handleNameInputChange = (event) => {
         setNameInput(event.target.value)
     } 
@@ -27,7 +25,6 @@ const CreateContact = () => {
         emailInput: emailInput
     }
 
-    // Creating 
     const handleSubmit = (event) => {
         event.preventDefault();
         const database = getDatabase(firebase);
