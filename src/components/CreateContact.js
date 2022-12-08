@@ -95,7 +95,6 @@ const CreateContact = () => {
                 </>
              <ul>
                 {contactInfo.map( (singleContact) => {
-                    console.log(singleContact)
                     return (
                         <div>
                             <li key={singleContact.key}>
