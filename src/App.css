@@ -22,6 +22,7 @@ h2 {
 label {
   min-width: 120px;
   padding-right: 10px;
+  margin-left: 20px;
 }
 
 .name {
@@ -29,7 +30,7 @@ label {
 }
 
 button {
-  margin-left: 95px;
+  margin-left: 165px;
   margin-bottom: 20px;
   margin-top: 15px;
 }

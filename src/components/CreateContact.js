@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import {getDatabase, ref, push, onValue, remove} from 'firebase/database'
-import firebase from '../Firebase';
+import app from '../Firebase';
 
 const CreateContact = () => {
 
@@ -27,7 +27,7 @@ const CreateContact = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const database = getDatabase(firebase);
+        const database = getDatabase(app);
         const dbRef = ref(database, "/contactInfo");
         push(dbRef, inputData);
         setNameInput("");
@@ -36,14 +36,14 @@ const CreateContact = () => {
     }
 
     const handleRemoveContact = (contactId) => {
-        const database = getDatabase(firebase);
+        const database = getDatabase(app);
         const dbRef = ref(database, `/contactInfo/${contactId}`);
         remove(dbRef);
 
     }
     
     useEffect (() => {
-        const database = getDatabase(firebase);
+        const database = getDatabase(app);
         const dbRef = ref(database, "/contactInfo");
         onValue(dbRef, (response) => {
             const newState = [];
